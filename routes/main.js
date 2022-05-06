@@ -5,10 +5,13 @@ const { Product, Denomination } = require('../db/models');
 router.get('/', async (req, res) => {
   let products;
   try {
-    products = await Product.findAll({ order: [['id', 'DESC']] , include: [{
-      model: Denomination,
-        attributes: ['name']
-      }]});
+    products = await Product.findAll({
+      order: [['id', 'DESC']],
+      include: [{
+        model: Denomination,
+        attributes: ['name'],
+      }],
+    });
     return res.render('main', { products });
   } catch (error) {
     return res.render('error', {

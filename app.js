@@ -23,7 +23,7 @@ const oneProdRouter = require('./routes/oneProduct');
 const lkEditRouter = require('./routes/lkEdit');
 
 // * импорт контроллеров
-const notFoundPage = require('./controllers/notfoundpage'); // тупой копипаст - плохо!:))
+const notFoundPage = require('./controllers/notfoundpage');
 
 const { PORT } = process.env;
 

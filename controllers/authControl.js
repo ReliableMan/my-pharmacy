@@ -91,5 +91,3 @@ exports.destroySession = (req, res, next) => {
     console.error(err);
   }
 };
-
-
