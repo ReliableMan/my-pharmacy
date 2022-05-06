@@ -1,0 +1,39 @@
+<h2>
+  Добавить товар 
+</h2>
+
+<br/>
+<form class="addProduct" action="/addProduct" method="POST" enctype="multipart/form-data">
+  <div class="form-group">
+      <div>
+        <input name="productName"  style="text-transform: uppercase" type="title" maxlength="50" placeholder="Название товара">
+      </div>
+      <div>
+        <input name="productPrice" type="title" maxlength="50" placeholder="Цена">
+      </div>
+      <div>
+        <input name="productDescription" type="title" maxlength="150" placeholder="Описание">
+      </div>
+      <div>
+        <input name="productImg" type="file" class="form-control-file" id="exampleFormControlFile1">
+      </div>
+      <div>
+        <input name="productQuantity" type="number" maxlength="150" placeholder="Количество">
+      </div>
+    <div class="form-group">
+    <label for="exampleFormControlSelect1">Категория товара</label>
+    <select name="productCategory" class="form-control" id="exampleFormControlSelect1">
+      <option value="1">Обезболивающие</option>
+      <option value="2">Витамины и добавки</option>
+      <option value="3">Болезни суставов</option>
+      <option value="4">Офтальмологические средства</option>
+      <option value="5">Детские подгузники</option>
+      <option value="6">Товары для диабетиков</option>
+      <option value="7">Медицинские приборы</option>
+      <option value="8">Лекарства от ОРВИ и гриппа</option>
+    </select>
+  </div>
+      <button type="submit" name="addProductBtn" class="btn btn-primary" >Добавить товар</button>
+  </div>
+ </form>
+

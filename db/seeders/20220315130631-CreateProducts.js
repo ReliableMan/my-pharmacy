@@ -1,7 +1,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Products', [{
-      title: 'Нурафен',
+      title: 'НУРАФЕН',
       price: 238,
       description: 'Мягкие овальные капсулы с красной полупрозрачной желатиновой оболочкой, с идентифицирующей надписью белого цвета NUROFEN. ',
       img: 'https://images.apteka.ru/medium_63ef4ea1-2d90-4160-a758-963495d50f76.jpeg',

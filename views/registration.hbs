@@ -1,4 +1,32 @@
-<h2 class="regtext">Регистрация</h2>
+
+<script defer src="/js/registration.js"></script>
+
+<div class="page">
+  <div class="container">
+    <div class="left">
+      <div class="login">Регистрация</div>
+      <div class="eula">Входя в систему, вы соглашаетесь с обработкой персональных данных в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ (ред. от 02.07.2021) "О персональных данных"</div>
+    </div>
+    <div class="right">
+       
+      <form id="signinForm" class="form1" method="POST" action="/auth/new">
+
+        <label for="username">ФИО</label>
+        <input id="username1" class="input" name="name" type="text" required minlength="4">
+
+        <label for="email">Email</label>
+        <input id="email1" class="input" name="email" type="text" pattern="^[A-Z0-9a-z._%+-]+@[A-Z0-9a-z.-]+\.[A-Za-z]{2,}$" required>
+      
+        <label for="password">Password</label>
+        <input id="password1" class="input" name="password" type="password" required minlength="6">
+
+        <input type="submit" id="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+</div>
+
+{{!-- <h2 class="regtext">Регистрация</h2>
 {{!-- <body class="bodyRegister"> --}}
 <div class="register">
 <form class="container gx-1" id="signupForm" method="POST" action="/auth/new">
@@ -17,4 +45,4 @@
   <button type="submit" class="btn btn-success" >Зарегистрироваться</button>
 </form>
 
-</div>
+</div> --}}

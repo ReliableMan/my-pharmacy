@@ -1,0 +1,27 @@
+.allOrders {
+  display: flex;
+  flex-wrap: wrap;
+}
+.greetingCard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-body {
+  display: flex;
+  flex-wrap: wrap;
+}
+ 
+ .currentOrder, .prevOrder {
+    
+ }
+
+ .userPhoto {
+  width: 10%;
+  height: auto;
+
+ }
+.dragPhoto {
+  width: 20%;
+  height: auto;
+}

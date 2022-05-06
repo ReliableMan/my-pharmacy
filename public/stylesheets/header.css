@@ -1,0 +1,23 @@
+
+.head {
+  position: fixed;
+  left: auto;
+  top: 0;
+  left: 200px;
+  right: 200px;
+  height: 60px;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  z-index: 9;
+}
+.dt {
+  margin-left: 20px;
+}
+.dt1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 50px;
+}

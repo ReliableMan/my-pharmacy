@@ -26,6 +26,8 @@ router.get('/signin', (req, res) => {
 router.post('/signin', checkUserAndCreateSession, (req, res) => {
   console.log('===> логин', req.body);
 });
-router.get('/signout', destroySession);
-
+router.get('/signout', destroySession, (req, res) => {
+  res.locals.username = null;
+  res.render('login');
+});
 module.exports = router;

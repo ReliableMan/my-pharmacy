@@ -1,0 +1,67 @@
+<br/>
+<br/>
+<h2>
+  Личный кабинет пользователя
+</h2>
+
+<br/>
+
+<div class="greetingCard">
+  {{!-- <img class="userPhoto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png" class="card-img-top" alt="..."> --}}
+  <div class="greetingText">
+    <h3 class="card-body">Привет, {{username}} </h3>
+    <h3 class="card-body">Пользователь с нами c {{data}} </h3>
+    <a class="nav-link" href="/lkEdit/{{id}}"><button class="btn btn-primary">Редактировать</button></a>
+  </div>
+</div>
+
+<br/>
+<br/>
+
+<div class="allOrders">
+
+    <div class="card currentOrder" style="width: 18rem;">
+          <div class="card-header text-center">
+            Текущий заказ
+          </div>
+        {{#each products}}
+          <div class="card-body">
+              <div>
+                <img class="dragPhoto" src="data:image/png;base64,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" class="card-img-top" alt="...">
+              </div>
+              <div>
+                <h5 class="card-title text-left"> {{title}} </h5>
+                <p class="card-text text-left">{{price}} рублей</p>
+              </div>
+              {{!-- <div> --}}
+                {{!-- <button class="btn btn-primary">Добавить в корзину</button> --}}
+              {{!-- </div> --}}
+          </div>
+        {{/each}} 
+  </div>
+    
+  <div class="card prevOrder" style="width: 18rem;">
+          <div class="card-header text-center">
+            Предыдущий заказ
+          </div>
+        {{#each products}}
+          <div class="card-body">
+              <div>
+                <img class="dragPhoto" src="data:image/png;base64,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" class="card-img-top" alt="...">
+              </div>
+              <div>
+                <h5 class="card-title text-left"> {{title}} </h5>
+                <p class="card-text text-left">{{price}} рублей</p>
+              </div>
+              {{!-- <div>
+                <button class="btn btn-primary">Добавить в корзину</button>
+              </div> --}}
+          </div>
+        {{/each}} 
+          {{!-- <button class="btn btn-primary">Повторить заказ</button> --}}
+  </div>
+      
+  
+</div>
+
+  

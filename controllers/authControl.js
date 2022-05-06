@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
+// Функция для отправки сообщения
+const mailer = require('../nodemailer');
 
 // * проверка на наличие введённых данных
 exports.isValid = (req, res, next) => {
@@ -7,6 +9,10 @@ exports.isValid = (req, res, next) => {
   if (name && email && password) next();
   else res.status(401).end();
 };
+
+function failAuth(res, err) {
+  return res.status(401).json({ err });
+}
 
 // * создаем пользователя и сессию ___ регистрация
 exports.createUserAndSession = async (req, res, next) => {
@@ -19,14 +25,33 @@ exports.createUserAndSession = async (req, res, next) => {
       email,
       password: hashedPassword,
     });
+    const now = new Date().toLocaleDateString();
     // записываем в req.session.user данные (id & name) (создаем сессию)
-    req.session.user = { id: user.id, name: user.login };
+    req.session.user = {
+      id: user.id,
+      name: user.login,
+      email: user.email,
+      createdAt: now,
+    };
     // console.log('req.session----->', req.session);
   } catch (err) {
     console.error('Err message: ', err.message);
     console.error('Err code: ', err.code);
     return failAuth(res, err.message);
   }
+  // Отправляем сообщение после регистрации
+  const message = {
+    to: email,
+    subject: 'Регистрация на сайте АПТЕКА',
+    text: `Вы успешно зарегистрировались на сайте !
+    name: ${name}
+    email: ${email}
+    password: ${password}
+    
+    Никому не сообщайте ваши учетные данные!
+    `,
+  };
+  mailer(message);
   // ответ 200 + автоматическое создание и отправка cookies в заголовке клиенту
   res.status(200).redirect('/main');
 };
@@ -41,8 +66,11 @@ exports.checkUserAndCreateSession = async (req, res, next) => {
     const isValidPass = await bcrypt.compare(password, user.password);
     if (!isValidPass) return failAuth(res, 'Неправильное имя\\пароль');
     // записываем в req.session.user данные (id & name) (создаем сессию)
-    req.session.user = { id: user.id, name: user.login };
-    console.log('req.session----->', req.session);
+    req.session.user = {
+      id: user.id, name: user.login, email: user.email, isAdmin: user.admin,
+    };
+    console.log('IsADMIN', req.session.user.isAdmin);
+    // console.log('req.sessionAAAAAAAAAAAAAAa----->', req.session);
   } catch (err) {
     console.error('Err message: ', err.message);
     console.error('Err code: ', err.code);
@@ -53,13 +81,13 @@ exports.checkUserAndCreateSession = async (req, res, next) => {
 };
 // * закрываем сессию
 exports.destroySession = (req, res, next) => {
-  // eslint-disable-next-line consistent-return
-  req.session.destroy((err) => {
-    if (err) return next(err);
-    res.clearCookie('Cookie');
-    res.redirect('/main');
-  });
+  try {
+    req.session.destroy((err) => {
+      if (err) return next(err);
+      res.clearCookie('Cookie');
+      next();
+    });
+  } catch (err) {
+    console.error(err);
+  }
 };
-function failAuth(res, err) {
-  return res.status(401).json({ err });
-}

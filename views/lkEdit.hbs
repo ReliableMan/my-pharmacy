@@ -1,0 +1,24 @@
+<script defer src="/js/lkEdit.js"></script>
+
+<h2>Редактировать</h2>
+
+<br/>
+<form id={{id}} class="editUser myForm" action="/lkEdit/{{id}}" method="POST" enctype="multipart/form-data">
+  <div class="form-group">
+      <div>
+        <input name="editName" value="{{username}}" style="text-transform: uppercase" type="title" maxlength="50" placeholder="ФИО">
+      </div>
+      <div>
+        <input name="editEmail" value="{{userEmail}}" type="title" maxlength="50" placeholder="Email">
+      </div>
+      <div>
+        <input name="editPassword" type="password" required minlength="6" placeholder="Пароль">
+      </div>
+
+       
+      {{!-- <div>
+        <input name="editImg" type="file" class="form-control-file" id="exampleFormControlFile1">
+      </div> --}}
+      <button type="submit" name="editUserBtn" class="btn btn-primary">Изменить данные</button>
+  </div>
+ </form>

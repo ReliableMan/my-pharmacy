@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 sessions
+
+public/images
+my.js

@@ -1,0 +1,104 @@
+<script defer src="/js/promo.js"></script>
+<link rel="stylesheet" href="/stylesheets/promo.css">
+
+
+{{#if isAdmin}}
+    <div class="promoAdmin">
+        <form id="formPromo">
+            <input type="text" name="titlePromo" placeholder="Введите название акции">
+            <input type="text" name="descriptionPromo" placeholder="Введите название акции">
+            <input type="date" name="startDate">
+            <input type="date" name="endDate">
+            <button type="submit" class="btn btn-success" >Сгенерировать акцию</button>
+        </form>
+    </div>
+{{/if}}
+
+<h1>Актуальные товары вы можете положить в корзину бесплатно!</h1>
+
+<div class="containerPromo">
+    <div class="previousPromo slidePromo">
+        <h3 style="color: black">previous</h3>
+        <br>
+        {{#if previousPromoProduct}}
+            {{#each previousPromoProduct}}
+                <!--        <img src={{Product.dataValues.img}} class="img-fluid rounded-start" alt="">-->
+                <div class="card bg-light mb-3" style="max-width: 450px;">
+                    <div class="row g-0 truo">
+                        <div class="col-md-4">
+                            <a href="/product/{{product_id}}"><img src={{Product.dataValues.img}} class="img-fluid rounded-start" alt=""></a>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <a href="/product/{{product_id}}"><h5 class="card-title">{{Product.dataValues.title}}</h5></a>
+                                <p class="card-text"><small class="text-success">Описание: {{Product.dataValues.description}}</small></p>
+                                <p class="card-text"><small class="text-muted">Категория {{Product.dataValues.denomination_id}}</small></p>
+<!--                                <button id="{{product_id}}" class="btn btn-outline-primary addToCartBtn">Добавить в корзину</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+        {{/if}}
+    </div>
+
+    <div class="actualPromo slidePromo">
+        <h3 style="color: black">actual</h3>
+        <br>
+        {{#if actualPromoProduct}}
+          <div class="sale-products">
+            {{#each actualPromoProduct}}
+                <!--        <img src={{Product.dataValues.img}} class="img-fluid rounded-start" alt="">-->
+                <div class="card bg-light mb-3" style="max-width: 450px;">
+                    <div class="row g-0 truo">
+                        <div class="col-md-4">
+                            <a href="/product/{{product_id}}"><img src={{Product.dataValues.img}} class="img-fluid rounded-start" alt=""></a>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <a href="/product/{{product_id}}"><h5 class="card-title">{{Product.dataValues.title}}</h5></a>
+                                <p class="card-text"><small class="text-muted">Бесплатно!</small></p>
+                                <p class="card-text"><small class="text-success">Описание: {{Product.dataValues.description}}</small></p>
+                                <p class="card-text"><small class="text-muted">Категория {{Product.dataValues.denomination_id}}</small></p>
+                                <button id="{{product_id}}" class="btn btn-outline-primary addToCartBtn">Добавить в корзину</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+          </div>
+        {{else}}
+        {{/if}}
+    </div>
+    <div class="nextPromo slidePromo">
+        <h3 style="color: black">next</h3>
+        <br>
+        {{#if nextPromoProduct}}
+            {{#each nextPromoProduct}}
+                <!--        <img src={{Product.dataValues.img}} class="img-fluid rounded-start" alt="">-->
+                <div class="card bg-light mb-3" style="max-width: 450px;">
+                    <div class="row g-0 truo">
+                        <div class="col-md-4">
+                            <a href="/product/{{product_id}}"><img src={{Product.dataValues.img}} class="img-fluid rounded-start" alt=""></a>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <a href="/product/{{product_id}}"><h5 class="card-title">{{Product.dataValues.title}}</h5></a>
+                                <p class="card-text"><small class="text-muted">Бесплатно!</small></p>
+                                <p class="card-text"><small class="text-success">Описание: {{Product.dataValues.description}}</small></p>
+                                <p class="card-text"><small class="text-muted">Категория {{Product.dataValues.denomination_id}}</small></p>
+<!--                                <button id="{{product_id}}" class="btn btn-outline-primary addToCartBtn">Добавить в корзину</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <h3>Нет будущих акций</h3>
+        {{/if}}
+    </div>
+</div>
+
+
+

@@ -1,7 +1,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Denominations', [{
-      name: ' Обезболивающе',
+      name: 'Обезболивающие',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -11,17 +11,17 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      name: 'БОЛЕЗНИ СУСТАВОВ',
+      name: 'Болезни суставов',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
-      name: 'ОФТАЛЬМОЛОГИЧЕСКИЕ СРЕДСТВА',
+      name: 'Офтальмологические средства',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
-      name: 'Подгузники детские',
+      name: 'Детские подгузники',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -31,7 +31,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      name: 'МЕДИЦИНСКИЕ ПРИБОРЫ',
+      name: 'Медицинские приборы',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
